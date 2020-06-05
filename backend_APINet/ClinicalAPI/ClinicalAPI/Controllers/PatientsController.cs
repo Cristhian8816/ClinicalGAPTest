@@ -6,10 +6,10 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
-using WebAngularAPI.Models;
+using ClinicalAPI.Models;
 using System.Web.Http.Cors;
 
-namespace WebAngularAPI.Controllers
+namespace ClinicalAPI.Controllers
 {   
     [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
     public class PatientsController : ApiController

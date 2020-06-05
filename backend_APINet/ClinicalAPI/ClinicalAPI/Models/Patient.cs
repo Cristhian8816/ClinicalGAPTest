@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace WebAngularAPI.Models
+namespace ClinicalAPI.Models
 {
     public class Patient
     {

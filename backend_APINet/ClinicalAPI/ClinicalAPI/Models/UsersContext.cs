@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 
 using Microsoft.EntityFrameworkCore.Metadata;
-namespace WebAngularAPI.Models
+namespace ClinicalAPI.Models
 {
     public partial class UsersContext : DbContext
     {
