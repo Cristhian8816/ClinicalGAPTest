@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ClinicalGAP": {
+    "platziStore": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ClinicalGAP",
+            "outputPath": "dist/platziStore",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -28,6 +28,9 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "./node_modules/flexboxgrid/dist/flexboxgrid.min.css",
+              "./node_modules/swiper/css/swiper.min.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -60,24 +63,55 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "stag": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.stag.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ClinicalGAP:build"
+            "browserTarget": "platziStore:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ClinicalGAP:build:production"
+              "browserTarget": "platziStore:build:production"
+            },
+            "stag": {
+              "browserTarget": "platziStore:build:stag"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ClinicalGAP:build"
+            "browserTarget": "platziStore:build"
           }
         },
         "test": {
@@ -92,6 +126,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -114,19 +149,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ClinicalGAP:serve"
+            "devServerTarget": "platziStore:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ClinicalGAP:serve:production"
+              "devServerTarget": "platziStore:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "ClinicalGAP",
+  "defaultProject": "platziStore",
   "cli": {
-    "analytics": "aedaaae4-18c0-4c2c-8f43-a217e419af1d"
+    "analytics": false
   }
 }
