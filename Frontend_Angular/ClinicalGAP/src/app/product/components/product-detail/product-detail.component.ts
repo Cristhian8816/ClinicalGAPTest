@@ -32,38 +32,4 @@ export class ProductDetailComponent implements OnInit {
      this.product = product;
     });
   }
-
-  creteProduct() {
-    const newProduct: Product = {
-      id: '222',
-      image: 'assets/images/banner-1.jpg',
-      title: 'Nuevo desde Angular',
-      price: 70000,
-      description: 'nuevo producto',
-      quantity: 1,
-  };
-    this.productService.createProduct(newProduct)
-    .subscribe(product => {
-     console.log(product);
-    });
-  }
-
-  updateProduct() {
-    const updateProduct: Partial<Product> = {
-      title: 'Edicion desde Angular',
-      price: 123456,
-      description: 'Editado producto'
-  };
-    this.productService.updateProduct('2', updateProduct)
-  .subscribe(product => {
-    console.log(product);
-  });
-  }
-
-  deleteProduct() {
-    this.productService.deleteProduct('1234')
-    .subscribe(rta => {
-      console.log(rta);
-    });
-  }
 }

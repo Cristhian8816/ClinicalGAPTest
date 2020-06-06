@@ -1,6 +1,6 @@
 export interface Product {
+    AppointmentId: string;
     PatientId: string;
-    Name: string;
-    Address: string;
-    PhoneNumber: number;
+    AppointmentType: string;
+    Date: string;
 }
