@@ -16,6 +16,7 @@ namespace ClinicalAPI.Models
         }
 
         public virtual DbSet<Patient> Patients { get; set; }
+        public virtual DbSet<Appointment> Appointments { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -53,6 +54,29 @@ namespace ClinicalAPI.Models
 
                 entity.Property(e => e.Address)
                     .HasColumnName("Address");               
+            });
+
+            modelBuilder.Entity<Appointment>(entity =>
+            {
+                entity.HasKey(e => e.AppointmentId);
+
+                entity.ToTable("Appoiments");
+
+                entity.Property(e => e.AppointmentId)
+                    .HasColumnName("AppoitmentId")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.PatientId)
+                    .HasColumnName("PatientId")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.AppointmentType)
+                    .HasColumnName("AppointmentType")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Date)
+                    .HasColumnName("Date");               
             });
         }
     }

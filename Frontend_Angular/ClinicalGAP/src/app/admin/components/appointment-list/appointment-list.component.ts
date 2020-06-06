@@ -10,7 +10,7 @@ import { AppointmentsService } from '../../../core/services/appointments/appoint
 export class AppointmentListComponent implements OnInit {
 
   appointments = [];
-  displayedColumns: string[] = ['AppointmentId', 'PatientId', 'AppointmentType', 'Date'];
+  displayedColumns: string[] = ['AppointmentId', 'PatientId', 'AppointmentType', 'Date', 'actions'];
 
   constructor(
     private appointmentServices: AppointmentsService

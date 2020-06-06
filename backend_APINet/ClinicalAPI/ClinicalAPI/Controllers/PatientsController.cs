@@ -31,6 +31,70 @@ namespace ClinicalAPI.Controllers
                 return NotFound();
             }
             return Ok(patient);
-        }       
+        }
+        public IHttpActionResult PostPatient(Patient patient)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest("Not a valid model");
+
+            using (UsersContext db = new UsersContext())
+            {
+                db.Patients.Add(new Patient()
+                {
+                    PatientId = patient.PatientId,
+                    Name = patient.Name,
+                    PhoneNumber = patient.PhoneNumber,
+                    Address = patient.Address                    
+                });
+
+                db.SaveChanges();
+            }
+            return Ok();
+        }
+
+        public IHttpActionResult PutPatient(int id, Patient patient)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest("Not a valid model");
+
+            using (UsersContext db = new UsersContext())
+            {
+                var existingPatient = db.Patients.Where(p => p.PatientId == id)
+                                                       .FirstOrDefault<Patient>();
+
+                if (existingPatient != null)
+                {
+                    existingPatient.PatientId = id;
+                    existingPatient.Name = patient.Name;
+                    existingPatient.PhoneNumber = patient.PhoneNumber;
+                    existingPatient.Address = patient.Address;                  
+
+                    db.SaveChanges();
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+
+            return Ok();
+        }
+
+        public IHttpActionResult DeletePatient(int id)
+        {
+            if (id <= 0)
+                return BadRequest("Not a valid Patient id");
+
+            using (UsersContext db = new UsersContext())
+            {
+                var Patient = db.Patients
+                    .Where(p => p.PatientId == id)
+                    .FirstOrDefault();
+
+                db.Patients.Remove(Patient);
+                db.SaveChanges();
+            }
+            return Ok();
+        }
     }
 }
