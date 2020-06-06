@@ -1,6 +1,6 @@
 export interface Appointment {
+    AppointmentId: string;
     PatientId: string;
-    Name: string;
-    Address: string;
-    PhoneNumber: number;
+    AppointmentType: string;
+    Date: Date;
 }
