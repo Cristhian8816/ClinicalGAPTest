@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ProductsService } from './../../../core/services/products/products.service';
+import { PatientsService } from '../../../core/services/patients/patients.service';
 
 @Component({
   selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss']
+  templateUrl: './patient-list.component.html',
+  styleUrls: ['./patient-list.component.scss']
 })
-export class ProductListComponent implements OnInit {
+export class PatientListComponent implements OnInit {
 
   products = [];
   displayedColumns: string[] = ['Patientid', 'Name', 'Phone NUmber', 'Address', 'actions'];
 
   constructor(
-    private productServices: ProductsService
+    private patientServices: PatientsService
   ) { }
 
   ngOnInit(): void {
@@ -21,13 +21,13 @@ export class ProductListComponent implements OnInit {
   }
 
   fetchProducts() {
-    this.productServices.getAllProducts()
+    this.patientServices.getAllPatients()
     .subscribe(products => {
       this.products = products;
     });
   }
   deleteProduct(id: string) {
-    this.productServices.deleteProduct(id)
+    this.patientServices.deletepatient(id)
     .subscribe(rta => {
       this.fetchProducts();
     });

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
-import { ProductFormComponent } from './components/product-form/product-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { MaterialModule} from '../material/material.module';
@@ -10,22 +9,22 @@ import { NavComponent } from './components/nav/nav.component';
 import { TableComponent } from './components/table/table.component';
 
 import { DashboardComponent } from './components/dashboard/dashboard.component';;
-import { ProductListComponent } from './components/product-list/product-list.component';
+import { PatientListComponent } from './components/patient-list/patient-list.component';
 import { AppointmentListComponent } from './components/appointment-list/appointment-list.component';
-import { FormProductComponent } from './components/form-product/form-product.component';
-import { ProductEditComponent } from './components/product-edit/product-edit.component';
+import { FormPatientComponent } from './components/form-patient/form-patient.component';
+import { PatientEditComponent } from './components/patient-edit/patient-edit.component';
+
 
 
 @NgModule({
   declarations: [
-    ProductFormComponent,
     NavComponent,
     TableComponent,
     DashboardComponent,
-    ProductListComponent,
+    PatientListComponent,
     AppointmentListComponent,
-    FormProductComponent,
-    ProductEditComponent
+    FormPatientComponent,
+    PatientEditComponent 
   ],
   imports: [
     CommonModule,

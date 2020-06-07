@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 
-import {ProductsService} from '../../../core/services/products/products.service';
-import {Product} from '../../../core/services/models/product.model';
+import {PatientsService} from '../../../core/services/patients/patients.service';
+import {Patient} from '../../../core/services/models/patient.model';
 
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss']
 })
-export class ProductDetailComponent implements OnInit {
+export class PatientDetailComponent implements OnInit {
 
-  product: Product;
+  patient: Patient;
 
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductsService
+    private patientsService: PatientsService
   ) { }
 
   ngOnInit(): void {
@@ -27,9 +27,9 @@ export class ProductDetailComponent implements OnInit {
   }
 
   fetchProduct(id: string) {
-    this.productService.getProduct(id)
-    .subscribe(product => {
-     this.product = product;
+    this.patientsService.getPatient(id)
+    .subscribe(patient => {
+     this.patient = patient;
     });
   }
 }

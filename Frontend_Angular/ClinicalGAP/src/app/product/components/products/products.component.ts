@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Product } from '../../../core/services/models/product.model';
-import { ProductsService } from '../../../core/services/products/products.service';
+import { Patient } from '../../../core/services/models/patient.model';
+import { PatientsService } from '../../../core/services/patients/patients.service';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class PatientsComponent implements OnInit {
 
-   products: Product[] = [];
+   products: Patient[] = [];
   constructor(
-    private productsService: ProductsService
+    private patientsService: PatientsService
   ) { }
 
   ngOnInit(): void {
@@ -25,7 +25,7 @@ export class ProductsComponent implements OnInit {
   }
 
   fetchProducts() {
-    this.productsService.getAllProducts()
+    this.patientsService.getAllPatients()
     .subscribe(products => {
       this.products = products;
     });

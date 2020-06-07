@@ -1,37 +1,37 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 
-import { Product } from '../models/product.model';
+import { Patient } from '../models/patient.model';
 
 import {environment} from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductsService {
+export class PatientsService {
   constructor(
     private http: HttpClient
   ) { }
 
-  getAllProducts() {
+  getAllPatients() {
     // return this.products;
-    return this.http.get<Product[]>(`${environment.url_api}/patients`);
+    return this.http.get<Patient[]>(`${environment.url_api}/patients`);
   }
 
-  getProduct(id: string) {
+  getPatient(id: string) {
     // return this.products.find(item => id === item.id);
-    return this.http.get<Product>(`${environment.url_api}/patients/${id}`);
+    return this.http.get<Patient>(`${environment.url_api}/patients/${id}`);
   }
 
-  createProduct( product: Product) {
-    return this.http.post(`${environment.url_api}/patients`, product);
+  createpatient( patient: Patient) {
+    return this.http.post(`${environment.url_api}/patients`, patient);
   }
 
-  updateProduct( id: string, changes: Partial<Product>) {
+  updatePatient( id: string, changes: Partial<Patient>) {
     return this.http.put(`${environment.url_api}/patients/${id}`, changes);
   }
 
-  deleteProduct( id: string) {
+  deletepatient( id: string) {
     return this.http.delete(`${environment.url_api}/patients/${id}`);
   }
 

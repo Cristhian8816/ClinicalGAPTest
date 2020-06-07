@@ -1,23 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { MyValidators  } from './../../../utils/validators';
+import { MyValidators  } from '../../../utils/validators';
 
-import { ProductsService } from './../../../core/services/products/products.service';
+import { PatientsService } from '../../../core/services/patients/patients.service';
 
 @Component({
   selector: 'app-product-edit',
-  templateUrl: './product-edit.component.html',
-  styleUrls: ['./product-edit.component.scss']
+  templateUrl: './patient-edit.component.html',
+  styleUrls: ['./patient-edit.component.scss']
 })
-export class ProductEditComponent implements OnInit {
+export class PatientEditComponent implements OnInit {
 
   form: FormGroup;
   id: string;
 
   constructor(
     private formBuilder: FormBuilder,
-    private productsService: ProductsService,
+    private patientsService: PatientsService,
     private router: Router,
     private activeRoute: ActivatedRoute
   ) {
@@ -27,7 +27,7 @@ export class ProductEditComponent implements OnInit {
   ngOnInit(): void {
     this.activeRoute.params.subscribe((params: Params) => {
       this.id = params.id;
-      this.productsService.getProduct(this.id)
+      this.patientsService.getPatient(this.id)
       .subscribe(product => {
        this.form.patchValue(product);
       });
@@ -38,7 +38,7 @@ export class ProductEditComponent implements OnInit {
     event.preventDefault();
     if (this.form.valid) {
       const product = this.form.value;
-      this.productsService.updateProduct(this.id, product)
+      this.patientsService.updatePatient(this.id, product)
       .subscribe((newProduct) => {
       console.log(newProduct);
       this.router.navigate(['./admin/products']);

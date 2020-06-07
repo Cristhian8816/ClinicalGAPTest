@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DemoComponent implements OnInit {
 
-  title = 'platziStore';
+  title = 'ClinicalGAP';
 
   power = 10;
 

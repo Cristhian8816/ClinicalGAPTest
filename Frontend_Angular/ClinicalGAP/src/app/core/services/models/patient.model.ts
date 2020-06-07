@@ -1,4 +1,4 @@
-export interface Product {
+export interface Patient {
     PatientId: string;
     Name: string;
     Address: string;

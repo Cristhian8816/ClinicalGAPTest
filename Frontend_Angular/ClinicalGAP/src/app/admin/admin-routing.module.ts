@@ -4,10 +4,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { NavComponent } from './components/nav/nav.component';
 import { TableComponent} from './components/table/table.component';
 import { DashboardComponent} from './components/dashboard/dashboard.component';
-import { ProductListComponent } from './components/product-list/product-list.component';
+import { PatientListComponent } from './components/patient-list/patient-list.component';
 import { AppointmentListComponent } from './components/appointment-list/appointment-list.component';
-import { FormProductComponent } from './components/form-product/form-product.component';
-import { ProductEditComponent } from './components/product-edit/product-edit.component';
+import { FormPatientComponent } from './components/form-patient/form-patient.component';
+import { PatientEditComponent } from './components/patient-edit/patient-edit.component';
 
 const routes: Routes = [
   {
@@ -24,7 +24,7 @@ const routes: Routes = [
       },
       {
         path: 'products',
-        component: ProductListComponent
+        component: PatientListComponent
       },
       {
         path: 'appointments',
@@ -32,11 +32,11 @@ const routes: Routes = [
       },
       {
         path: 'products/create',
-        component: FormProductComponent
+        component: FormPatientComponent
       },
       {
         path: 'products/edit/:id',
-        component: ProductEditComponent
+        component: PatientEditComponent
       }
     ]
   }

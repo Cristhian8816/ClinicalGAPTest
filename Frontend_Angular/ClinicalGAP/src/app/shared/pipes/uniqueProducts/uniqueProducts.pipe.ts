@@ -1,14 +1,14 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Product } from '../../../core/services/models/product.model';
+import { Patient } from '../../../core/services/models/patient.model';
 
 @Pipe({
   name: 'uniqueProducts'
 })
 export class UniqueProductsPipe implements PipeTransform {
 
-  uniqueProducts: Product[] = [];
+  uniqueProducts: Patient[] = [];
 
-  transform(value: Product[]): Product[] {
+  transform(value: Patient[]): Patient[] {
     return this.uniqueProducts;
   }
 
