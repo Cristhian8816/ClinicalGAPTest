@@ -14,15 +14,21 @@
             <div class="row">
                 <div class="col xs">
                     <mat-form-field>
-                        <input placeholder="Patient" formControlName="PatientId" matInput typo="text">
-                    </mat-form-field>
+                        <mat-label>Patients</mat-label>
+                        <mat-select [formGroup]="patientsNames" multiple>                         
+                          <mat-option *ngFor="let patientName of patientsNames" [value]="patientName">{{patientName}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
                 </div>
             </div>
             <div class="row">
                 <div class="col xs">
                     <mat-form-field>
-                        <input placeholder="Appointment Type" formControlName="AppointmentType" matInput typo="number">
-                    </mat-form-field>                    
+                        <mat-label>Appointment Types</mat-label>
+                        <mat-select [formGroup]="apointmentsTypes" multiple>                         
+                          <mat-option *ngFor="let apointmentsType of apointmentsTypes" [value]="apointmentsType">{{apointmentsType}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>                    
                 </div>
             </div>
 

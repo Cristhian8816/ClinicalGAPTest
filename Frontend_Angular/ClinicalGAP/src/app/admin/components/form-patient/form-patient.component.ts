@@ -20,7 +20,9 @@ import { Observable } from 'rxjs';
   styleUrls: ['./form-patient.component.scss']
 })
 export class FormPatientComponent implements OnInit {
-
+  patientsNames = [];
+  apointmentsTypes = ['Neurologia', 'Medicina general', 'Pediatria', 'Odontologia' ];
+  Name: string;
   form: FormGroup;
   image$: Observable<any>;
   ID;
@@ -36,6 +38,7 @@ export class FormPatientComponent implements OnInit {
 
   ngOnInit(): void {
     this.FecthAppointments();
+    this.FecthPatients();
    }
 
 
@@ -56,7 +59,7 @@ export class FormPatientComponent implements OnInit {
   private buildForm() {
     this.form = this.formBuilder.group({
      id: ['', [Validators.required]],
-     PatientId: ['', [Validators.required]],
+     patientsNames: ['', [Validators.required]],
      AppointmentType: ['', [Validators.required]],
      datepicker: [''],
      description: ['', [Validators.required]]
@@ -73,5 +76,20 @@ export class FormPatientComponent implements OnInit {
       const ID = appointments.length;
       this.ID = ID + 1;
     });
+  }
+
+  FecthPatients() {
+    this.patientsService.getAllPatients()
+    .subscribe(patients => {
+      this.patientsNames = this.findPatientsName(patients);
+    });
+  }
+
+  findPatientsName(patients) {
+    patients.forEach(patient => {
+      this.Name = patient.Name;
+      this.patientsNames.push(this.Name);
+    });
+    return this.patientsNames;
   }
 }
