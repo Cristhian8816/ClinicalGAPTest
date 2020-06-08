@@ -17,19 +17,19 @@ export class PatientListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.fetchProducts();
+    this.fetchPatients();
   }
 
-  fetchProducts() {
+  fetchPatients() {
     this.patientServices.getAllPatients()
     .subscribe(products => {
       this.products = products;
     });
   }
-  deleteProduct(id: string) {
+  deletepatient(id: string) {
     this.patientServices.deletepatient(id)
     .subscribe(rta => {
-      this.fetchProducts();
+      this.fetchPatients();
     });
   }
 
