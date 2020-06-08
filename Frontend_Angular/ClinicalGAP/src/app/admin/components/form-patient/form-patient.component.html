@@ -3,37 +3,31 @@
         <mat-card-header>
             <mat-card-title>Fill the next Form to Created a new Appointment for a Patient</mat-card-title>           
         </mat-card-header>
-        <mat-card-content>
+        <mat-card-content>            
             <div class="row">
-                <div class="col xs">
-                    <mat-form-field>
-                        <input  [(ngModel)]="ID" placeholder="AppoitmentID" formControlName="id" matInput typo="text" value="ID">
-                    </mat-form-field>
-                </div>
+                <mat-form-field>
+                    <mat-label>Patients</mat-label>
+                    <mat-select [(ngModel)]="patientNameSelected" [formGroup]="patientsNames" multiple formControlName="PatientId" >                         
+                      <mat-option *ngFor="let patientName of patientsNames" [value]="patientName">{{patientName}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>                               
             </div>
-            <div class="row">
-                <div class="col xs">
-                    <mat-form-field>
-                        <mat-label>Patients</mat-label>
-                        <mat-select [formGroup]="patientsNames" multiple>                         
-                          <mat-option *ngFor="let patientName of patientsNames" [value]="patientName">{{patientName}}</mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col xs">
-                    <mat-form-field>
-                        <mat-label>Appointment Types</mat-label>
-                        <mat-select [formGroup]="apointmentsTypes" multiple>                         
-                          <mat-option *ngFor="let apointmentsType of apointmentsTypes" [value]="apointmentsType">{{apointmentsType}}</mat-option>
-                        </mat-select>
-                      </mat-form-field>                    
-                </div>
+            <div class="row">               
+                <mat-form-field>
+                    <mat-label>Appointment Types</mat-label>
+                    <mat-select [(ngModel)]="appointmentTypeSelected" [formGroup]="apointmentsTypes" multiple formControlName="appointmentType">                                                                       
+                        <mat-option *ngFor="let appointmentType of apointmentsTypes" [value]="appointmentType">{{appointmentType}}</mat-option>
+                    </mat-select>
+                </mat-form-field>                                 
             </div>
 
             <div class="row">
-               
+                <mat-form-field>
+                    <mat-label>Choose an Appointment date</mat-label>
+                    <input [(ngModel)]="appointmentDate" matInput [matDatepicker]="picker" formControlName="Date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
             </div>                             
         </mat-card-content>
         <mat-card-actions>

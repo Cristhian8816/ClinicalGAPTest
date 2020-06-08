@@ -23,8 +23,8 @@ export class AppointmentsService {
     return this.http.get<Appointment>(`${environment.url_api}/appointments/${id}`);
   }
 
-  createAppointment( appointments: Appointment) {
-    return this.http.post(`${environment.url_api}/appointments`, appointments);
+  createAppointment( appointment: any) {
+    return this.http.post(`${environment.url_api}/appointments`, appointment);
   }
 
   updateAppointment( id: string, changes: Partial<Appointment>) {

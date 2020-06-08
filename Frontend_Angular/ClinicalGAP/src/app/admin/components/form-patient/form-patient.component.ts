@@ -21,11 +21,14 @@ import { Observable } from 'rxjs';
 })
 export class FormPatientComponent implements OnInit {
   patientsNames = [];
-  apointmentsTypes = ['Neurologia', 'Medicina general', 'Pediatria', 'Odontologia' ];
-  Name: string;
+  patientsIds = [];
+  apointmentsTypes = ['Neurologia', 'Medicina general', 'Pediatria', 'Odontologia' ]; 
   form: FormGroup;
-  image$: Observable<any>;
   ID;
+  PatientName;
+  appointmentDate: Date;
+  patientNameSelected;
+  appointmentTypeSelected;
   constructor(
     private formBuilder: FormBuilder,
     private patientsService: PatientsService,
@@ -37,7 +40,7 @@ export class FormPatientComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.FecthAppointments();
+    this.FecthAppointmentsID();
     this.FecthPatients();
    }
 
@@ -45,32 +48,38 @@ export class FormPatientComponent implements OnInit {
   saveProduct(event: Event) {
     event.preventDefault();
     if (this.form.valid) {
-      const product = this.form.value;
-      this.patientsService.createpatient(product)
-      .subscribe((newPatient) => {
-      console.log(newPatient);
-      this.router.navigate(['./admin/patients']);
+      let index = 0;
+      let selectedPatientID = 0;
+      this.patientsNames.forEach(patientName => {
+        if(patientName === this.patientNameSelected[0])
+        {
+          selectedPatientID = this.patientsIds[index];
+        }
+        index++;
+      });
+      const a = { 'AppointmentId': this.ID,
+                  'Date': this.appointmentDate,
+                  'AppointmentType': this.appointmentTypeSelected[0],
+                  'PatientID': selectedPatientID};
+
+      this.appointmentsService.createAppointment(a)
+      .subscribe((newappointment) => {
+      console.log(newappointment);
+      this.router.navigate(['./admin/appointments']);
       });
     }
     console.log(this.form.value);
   }
 
-
   private buildForm() {
     this.form = this.formBuilder.group({
-     id: ['', [Validators.required]],
-     patientsNames: ['', [Validators.required]],
-     AppointmentType: ['', [Validators.required]],
-     datepicker: [''],
-     description: ['', [Validators.required]]
+     PatientId: ['', [Validators.required]],
+     appointmentType: ['', [Validators.required]],
+     Date: ['', [Validators.required]]
     });
   }
 
-  get proceField() {
-    return this.form.get('price');
-  }
-
-  FecthAppointments() {
+  FecthAppointmentsID() {
     this.appointmentsService.getAllAppointments()
     .subscribe(appointments => {
       const ID = appointments.length;
@@ -87,8 +96,8 @@ export class FormPatientComponent implements OnInit {
 
   findPatientsName(patients) {
     patients.forEach(patient => {
-      this.Name = patient.Name;
-      this.patientsNames.push(this.Name);
+      this.patientsNames.push(patient.Name);
+      this.patientsIds.push(patient.PatientId);
     });
     return this.patientsNames;
   }
