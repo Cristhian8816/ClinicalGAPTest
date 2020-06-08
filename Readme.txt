@@ -5,7 +5,7 @@ you can find the model to the DATABASE using Entity framework as a ORM, there yo
 local machine and the other for SmarterASP server when de database is hosted. 
 The backend has cors enable where I filter to give the data just for the Especific URL.
 
-The Frontend is developed with Angular.js and here we can find a main page with information about ClinicalGAP and an admin module, where 
+The Frontend is developed with Angular version 8 and here we can find a main page with information about ClinicalGAP and an admin module, where 
 you have to login to get in this module... for this you have two options:
 1) login with the next credentials: user: cristhian.julian@hotmail.com password: 123456
 2) put manually in the url: http://localhost:4200/register/login and here you can register your email and password, after that you can go to 
