@@ -22,3 +22,5 @@ occurs if de appointment' date is longer than one day from the moment that you a
 
 finally you have the button 'logout' to gotout of the admin module.
 ---------------------------------------------------------------------------------------------------------------------------------------
+
+File ClinicalGAPBDFinal.bak is upload if you want to restore and see the schema.
