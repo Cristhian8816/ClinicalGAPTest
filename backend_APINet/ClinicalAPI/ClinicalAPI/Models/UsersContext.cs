@@ -27,7 +27,7 @@ namespace ClinicalAPI.Models
                 //LocalConexionString
                 //optionsBuilder.UseSqlServer("Data Source=LAPTOP-E3OD0JS8\\SQLEXPRESS;Initial Catalog=ClinicalGAPDB; user id=desenv;password=desenv; MultipleActiveResultSets=true; Persist Security Info=True;");
                 //SmarterConexionString
-                optionsBuilder.UseSqlServer("Data Source = SQL5059.site4now.net; Initial Catalog = DB_A5E858_ClinicalGAP; User Id = DB_A5E858_ClinicalGAP_admin; Password = 40A39j21c14a11l;");                
+                optionsBuilder.UseSqlServer("Data Source = SQL5059.site4now.net; Initial Catalog = DB_A5E858_ClinicalGAPFinal; User Id = DB_A5E858_ClinicalGAPFinal_admin; Password = 40A39j21c14a11l;");           
             }
             
         }

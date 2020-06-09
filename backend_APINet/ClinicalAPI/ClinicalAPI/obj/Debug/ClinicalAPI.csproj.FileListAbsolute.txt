@@ -244,4 +244,3 @@ D:\Programing-Projects\GAP\Clinical_Project\backend_APINet\ClinicalAPI\ClinicalA
 D:\Programing-Projects\GAP\Clinical_Project\backend_APINet\ClinicalAPI\ClinicalAPI\bin\ru\Microsoft.Data.SqlClient.resources.dll
 D:\Programing-Projects\GAP\Clinical_Project\backend_APINet\ClinicalAPI\ClinicalAPI\bin\zh-Hans\Microsoft.Data.SqlClient.resources.dll
 D:\Programing-Projects\GAP\Clinical_Project\backend_APINet\ClinicalAPI\ClinicalAPI\bin\zh-Hant\Microsoft.Data.SqlClient.resources.dll
-D:\Programing-Projects\GAP\Clinical_Project\backend_APINet\ClinicalAPI\ClinicalAPI\obj\Debug\ClinicalAPI.csprojAssemblyReference.cache
