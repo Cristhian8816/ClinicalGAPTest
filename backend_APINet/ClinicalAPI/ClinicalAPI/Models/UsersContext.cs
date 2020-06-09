@@ -17,6 +17,7 @@ namespace ClinicalAPI.Models
 
         public virtual DbSet<Patient> Patients { get; set; }
         public virtual DbSet<Appointment> Appointments { get; set; }
+        public virtual DbSet<MigrationHistory> MigrationHistories { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -24,9 +25,9 @@ namespace ClinicalAPI.Models
             if (!optionsBuilder.IsConfigured)
             {
                 //LocalConexionString
-                optionsBuilder.UseSqlServer("Data Source=LAPTOP-E3OD0JS8\\SQLEXPRESS;Initial Catalog=ClinicalGAPDB; user id=desenv;password=desenv; MultipleActiveResultSets=true; Persist Security Info=True;");
+                //optionsBuilder.UseSqlServer("Data Source=LAPTOP-E3OD0JS8\\SQLEXPRESS;Initial Catalog=ClinicalGAPDB; user id=desenv;password=desenv; MultipleActiveResultSets=true; Persist Security Info=True;");
                 //SmarterConexionString
-                //optionsBuilder.UseSqlServer("Data Source = SQL5059.site4now.net; Initial Catalog = DB_A5E858_ClinicalGAP; User Id = DB_A5E858_ClinicalGAP_admin; Password = 40A39j21c14a11l;");                
+                optionsBuilder.UseSqlServer("Data Source = SQL5059.site4now.net; Initial Catalog = DB_A5E858_ClinicalGAP; User Id = DB_A5E858_ClinicalGAP_admin; Password = 40A39j21c14a11l;");                
             }
             
         }
@@ -76,6 +77,28 @@ namespace ClinicalAPI.Models
 
                 entity.Property(e => e.Date)
                     .HasColumnName("Date");               
+            });
+
+            modelBuilder.Entity<MigrationHistory>(entity =>
+            {
+                entity.HasKey(e => e.MigrationId);
+
+                entity.ToTable("MigrationsHistory");
+
+                entity.Property(e => e.MigrationId)
+                    .HasColumnName("MigrationId")
+                    .HasMaxLength(250)
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.Description)
+                    .HasColumnName("Description")
+                    .HasMaxLength(150)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ProductVersion)
+                    .HasColumnName("ProductVersion")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
             });
         }
     }

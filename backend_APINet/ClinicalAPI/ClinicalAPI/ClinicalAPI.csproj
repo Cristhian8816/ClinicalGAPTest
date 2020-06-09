@@ -261,6 +261,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20200609012619_Creating_tables_Patient_and_appointments.cs" />
+    <Compile Include="Migrations\20200609012619_Creating_tables_Patient_and_appointments.designer.cs">
+      <DependentUpon>20200609012619_Creating_tables_Patient_and_appointments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200609020937_Creating_LogMigrationsTable.cs" />
+    <Compile Include="Migrations\20200609020937_Creating_LogMigrationsTable.designer.cs">
+      <DependentUpon>20200609020937_Creating_LogMigrationsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\UsersContextModelSnapshot.cs" />
+    <Compile Include="Models\MigrationsHistory.cs" />
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\UsersContext.cs" />
